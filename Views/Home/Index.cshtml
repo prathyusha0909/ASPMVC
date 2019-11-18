@@ -1,0 +1,41 @@
+﻿@model MvcApplication.Models.CategoryProductViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>NorthWind traders.</h1>
+    <p class="lead">NorthWind traders is an online form for selling somethings since2000.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+@using (Html.BeginForm())
+{ 
+<section class="row">
+    <div class="col-4 text-right">Select Category</div>
+    <div class="col-6">
+        @Html.DropDownList("SelectedCategoryId",
+   new SelectList(Model.Categories, "CategoryId", "CategoryName"),
+   new { @class = "form-control" });
+    </div>
+    <div class="col-2 text-left">
+        <input type="submit" value="Fetch" class="btn btn-primary"/>
+    </div>
+</section>
+var grid=new WebGrid(
+source:Model.Products,
+columnNames:new string[] {"ProductName","UnitPrice"},
+rowsPerPage:10,canPage:true);
+
+<section class="row">
+    <div class="col-6 offset-3">
+       @grid.GetHtml(
+    tableStyle: "table table-striped table-sm",
+    columns: new WebGridColumn[]{
+        new WebGridColumn { ColumnName = "ProductName", Header = "Product Name" },
+        new WebGridColumn { ColumnName = "UnitPrice", Header = "Unit Price" }
+       }
+        )
+    </div>
+</section>
+}

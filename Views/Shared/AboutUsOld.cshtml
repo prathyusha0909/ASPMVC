@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "AboutUs";
+}
+
+<h2>AboutUs</h2>
+<h4>Using ViewData,Viewbag and TempData </h4>
+
+<p>ViewData => <span class="text-danger font-weight-bold">@ViewData["one"]</span></p>
+<p>ViewBag => <span class="text-danger font-weight-bold">@ViewBag.one</span></p>
+<p>ViewData => <span class="text-danger font-weight-bold">@ViewData["ViewDataMessage"]</span></p>
+<p>ViewBag => <span class="text-danger font-weight-bold">@ViewBag.ViewBagMessage</span></p>
+<p>TempData => <span class="text-danger font-weight-bold">@TempData["TempDataMessage"]</span></p>
+<p>Session => <span class="text-danger font-weight-bold">@Session["SessionMessage"]</span></p>
+
+@Html.ActionLink(
+    linkText:"Go to About Us-0",
+    actionName:"AboutUs",
+    routeValues:new { @option =0},
+    htmlAttributes:new { @class="btn btn-lg btn-outline-info"}
+    )
+
+@Html.ActionLink(
+    linkText:"Go to About Us-1",
+    actionName:"AboutUs",
+    routeValues:new { @option =1},
+    htmlAttributes:new { @class="btn btn-lg btn-outline-success"}
+    )
